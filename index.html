@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Tesseract Test Suite</title>
+        <style>
+            #results li.pass {
+                color: green;
+            }
+            #results li.fail {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="results"></ul>
+        <script src="tesseract.js"></script>
+        <script>
+            window.onload = function() {
+                test("Async Test #1", function() {
+                    pause();
+                    setTimeout(function() {
+                        assert(true, "First test completed");
+                        resume();
+                    }, 1000);
+                });
+                test("Async Test #2", function() {
+                    pause();
+                    setTimeout(function() {
+                        assert(true, "Second test completed");
+                        resume();
+                    }, 1000);
+                });
+                test("Sync Test Group #1", function() {
+                    assert(true, "First assertion completed");
+                    assert(true, "Second assertion completed");
+                    assert(true, "Third assertion completed");
+                });
+                test("Sync Test Group #2", function() {
+                    assert(true, "First test completed");
+                    assert(false, "Second test failed");
+                    assert(true, "Third assertion completed");
+                });
+                test("Sync Test Group #3", function() {
+                    assert(null, "fail");
+                    assert(5, "pass");
+                });
+            };
+        </script>
+    </body>
+</html>
